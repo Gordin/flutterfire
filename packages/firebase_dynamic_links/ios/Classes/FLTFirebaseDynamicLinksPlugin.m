@@ -61,6 +61,7 @@ static NSMutableDictionary *getDictionaryFromFlutterError(FlutterError *error) {
   if ([FIRApp respondsToSelector:sel]) {
     [FIRApp performSelector:sel withObject:LIBRARY_NAME withObject:LIBRARY_VERSION];
   }
+  [FIRDynamicLinks performDiagnosticsWithCompletion:nil];
 }
 
 - (instancetype)initWithChannel:(FlutterMethodChannel *)channel {
@@ -74,6 +75,7 @@ static NSMutableDictionary *getDictionaryFromFlutterError(FlutterError *error) {
       NSLog(@"Configured the default Firebase app %@.", [FIRApp defaultApp].name);
     }
   }
+  [FIRDynamicLinks performDiagnosticsWithCompletion:nil];
   return self;
 }
 
